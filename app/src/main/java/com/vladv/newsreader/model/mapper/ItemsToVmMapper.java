@@ -7,9 +7,10 @@ public class ItemsToVmMapper {
     public static ArticleItemViewModel ArticleToVM(Article article){
 
         ArticleItemViewModel vm = new ArticleItemViewModel();
-        vm.articleTitle.set(article.title);
-        vm.articleContent.set(article.content);
-        vm.imageURL.set(article.imageUrl);
+        vm.articleTitle.set(article.getTitle());
+        vm.articleContent.set(article.getContent());
+        vm.articleDescription.set(article.getDescription());
+        vm.imageURL.set(article.getImageUrl());
 
         return  vm;
     }

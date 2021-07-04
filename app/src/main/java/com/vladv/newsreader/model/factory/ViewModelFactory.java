@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.vladv.data.NewsRepository;
 import com.vladv.newsreader.NewsFeedApplication;
 import com.vladv.newsreader.model.ArticleReadViewModel;
-import com.vladv.newsreader.model.MainViewModel;
+import com.vladv.newsreader.model.FeedDisplayViewModel;
 
 public class ViewModelFactory implements ViewModelProvider.Factory {
 
@@ -23,12 +23,13 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(Class<T> modelClass) {
 
         if (modelClass.isAssignableFrom(ArticleReadViewModel.class)) {
-            return (T) new ArticleReadViewModel();
+            NewsRepository repo = NewsFeedApplication.getRepoProvider().provideNewsRepository();
+            return (T) new ArticleReadViewModel(repo);
         }
 
-        if (modelClass.isAssignableFrom(MainViewModel.class)) {
+        if (modelClass.isAssignableFrom(FeedDisplayViewModel.class)) {
             NewsRepository repo = NewsFeedApplication.getRepoProvider().provideNewsRepository();
-            return (T) new MainViewModel(application, repo);
+            return (T) new FeedDisplayViewModel(application, repo);
         }
 
 

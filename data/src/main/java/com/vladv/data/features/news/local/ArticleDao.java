@@ -29,5 +29,5 @@ public interface ArticleDao {
     void deleteArticle(int id);
 
     @Query("SELECT * FROM articles where title= :title")
-    Maybe<ArticleEntity> findArticleByTitle(String title);
+    Flowable<ArticleEntity> findArticleByTitle(String title);
 }

@@ -16,12 +16,12 @@ public class NewsDtoToNewsMapper implements Function<ArticleListDto, List<Articl
         List<Article> articles = new ArrayList<>();
 
         for (ArticleDto dto : articleDtos.articles) {
-            Article article = new Article(
-                    dto.urlToImage != null ? dto.urlToImage : "", //Adding default values for business model
-                    dto.title != null ? dto.title : "",
-                    dto.content != null ? dto.content : "",
-                    dto.description != null ? dto.description : ""
-            );
+            Article article = new Article.Builder()
+                    .withTitle(dto.title != null ? dto.title : "")
+                    .withImgUrl(dto.urlToImage != null ? dto.urlToImage : "")
+                    .withDescription(dto.description != null ? dto.description : "")
+                    .withContent(dto.content != null ? dto.content : "")
+                    .build();
 
             articles.add(article);
         }

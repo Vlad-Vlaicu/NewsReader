@@ -6,6 +6,7 @@ import com.vladv.data.features.news.model.Article;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
 
@@ -19,8 +20,10 @@ public interface NewsRepository {
 
     Flowable<List<ArticleEntity>> getLocalArticlesList();
 
-    void deleteArticle(int id);
+    void removeArticle(int id);
 
-    void freeDatabase();
+    void clearCache();
+
+    Flowable<ArticleEntity> getArticleByTitle(String title);
 
 }

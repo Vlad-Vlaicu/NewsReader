@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.vladv.newsreader.model.MainViewModel" />
+            type="com.vladv.newsreader.model.FeedDisplayViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

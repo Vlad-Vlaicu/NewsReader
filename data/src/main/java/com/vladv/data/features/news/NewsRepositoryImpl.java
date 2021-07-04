@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
 
@@ -48,7 +49,7 @@ public class NewsRepositoryImpl implements NewsRepository {
     }
 
     @Override
-    public void deleteArticle(int id) {
+    public void removeArticle(int id) {
         localDataStore.deleteArticle(id);
     }
 
@@ -57,7 +58,12 @@ public class NewsRepositoryImpl implements NewsRepository {
         localDataStore.saveArticleItem(articleEntity);
     }
 
-    public void freeDatabase(){
-        localDataStore.freeDatabase();
+    public void clearCache(){
+        localDataStore.clearCache();
+    }
+
+    @Override
+    public Flowable<ArticleEntity> getArticleByTitle(String title) {
+        return localDataStore.getArticleByTitle(title);
     }
 }

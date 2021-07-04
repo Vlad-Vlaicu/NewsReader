@@ -5,10 +5,9 @@ import android.os.Bundle;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.vladv.data.features.news.model.Article;
 import com.vladv.newsreader.R;
 import com.vladv.newsreader.fragments.ArticleReadFragment;
-import com.vladv.newsreader.fragments.MainFragment;
+import com.vladv.newsreader.fragments.FeedDisplayFragment;
 import com.vladv.newsreader.model.ArticleEventModel;
 import com.vladv.newsreader.model.ArticleItemViewModel;
 
@@ -33,7 +32,7 @@ public class ArticleNavigator {
     }
 
     private void openNewsFeedScreen() {
-        MainFragment fragment = new MainFragment();
+        FeedDisplayFragment fragment = new FeedDisplayFragment();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
@@ -46,11 +45,9 @@ public class ArticleNavigator {
     private void openReadArticleSceen(@NotNull ArticleItemViewModel item) {
         ArticleReadFragment fragment = ArticleReadFragment.newInstance();
         Bundle bundle = new Bundle();
-        Article article = new Article();
-        article.title = item.articleTitle.get();
-        article.content = item.articleContent.get();
+        String articleTitle = item.articleTitle.get();
 
-        bundle.putSerializable(ArticleReadFragment.ARTICLE,article);
+        bundle.putString(ArticleReadFragment.ARTICLE,articleTitle);
         fragment.setArguments(bundle);
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();

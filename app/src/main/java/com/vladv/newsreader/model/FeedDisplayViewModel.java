@@ -2,7 +2,6 @@ package com.vladv.newsreader.model;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
@@ -10,7 +9,6 @@ import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModel;
 
 import com.vladv.data.NewsRepository;
 import com.vladv.data.features.news.local.model.ArticleEntity;
@@ -27,9 +25,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.rxjava3.subjects.PublishSubject;
 
-public class MainViewModel extends AndroidViewModel implements ArticleHandler {
+public class FeedDisplayViewModel extends AndroidViewModel implements ArticleHandler {
 
-    private static final String TAG = MainViewModel.class.getName();
+    private static final String TAG = FeedDisplayViewModel.class.getName();
     private final static String LINK = "https://newsapi.org/";
     private final NewsRepository repo;
     public final ObservableBoolean isLoading;
@@ -41,7 +39,7 @@ public class MainViewModel extends AndroidViewModel implements ArticleHandler {
     private Disposable disposable;
     public PublishSubject<ArticleEventModel> events;
 
-    public MainViewModel(Application application, NewsRepository repo) {
+    public FeedDisplayViewModel(Application application, NewsRepository repo) {
         super(application);
         this.repo = repo;
         this.isLoading = new ObservableBoolean();
@@ -52,8 +50,6 @@ public class MainViewModel extends AndroidViewModel implements ArticleHandler {
         isListEmpty.set(true);
         this.items = new ObservableArrayList<>();
         this.events =PublishSubject.create();
-
-
 
 
     }
@@ -76,7 +72,6 @@ public class MainViewModel extends AndroidViewModel implements ArticleHandler {
             ArticleItemViewModel articleVM = ItemsToVmMapper.ArticleToVM(a);
             items.add(articleVM);
             repo.saveArticleItem(ItemsToEntityMapper.apply(a));
-            Log.d(TAG,"Article saved " + a.title);
         }
 
     }
