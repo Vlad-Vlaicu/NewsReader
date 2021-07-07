@@ -1,0 +1,39 @@
+package com.vladv.newsreader.model.factory;
+
+import android.app.Application;
+
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.vladv.data.NewsRepository;
+import com.vladv.newsreader.NewsFeedApplication;
+import com.vladv.newsreader.model.ArticleReadViewModel;
+import com.vladv.newsreader.model.FeedDisplayViewModel;
+
+public class ViewModelFactory implements ViewModelProvider.Factory {
+
+    private final Application application;
+
+    public ViewModelFactory(Application application) {
+        this.application = application;
+    }
+
+
+    @Override
+    public <T extends ViewModel> T create(Class<T> modelClass) {
+
+        if (modelClass.isAssignableFrom(ArticleReadViewModel.class)) {
+            NewsRepository repo = NewsFeedApplication.getRepoProvider().provideNewsRepository();
+            return (T) new ArticleReadViewModel(repo);
+        }
+
+        if (modelClass.isAssignableFrom(FeedDisplayViewModel.class)) {
+            NewsRepository repo = NewsFeedApplication.getRepoProvider().provideNewsRepository();
+            return (T) new FeedDisplayViewModel(application, repo);
+        }
+
+
+
+        throw new IllegalArgumentException("Unknown ViewModel class");
+    }
+}
