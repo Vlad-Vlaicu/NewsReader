@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.vladv.data.features.news.local.ArticleDao;
 import com.vladv.data.features.news.local.model.ArticleEntity;
 
-@Database(entities = {ArticleEntity.class},version = 2)
+@Database(entities = {ArticleEntity.class},version = 3)
 public abstract class ArticleDatabase extends RoomDatabase {
     public abstract ArticleDao articleDao();
     private static final String DB_NAME = "articles_db";

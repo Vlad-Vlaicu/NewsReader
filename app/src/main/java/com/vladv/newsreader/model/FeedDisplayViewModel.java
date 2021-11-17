@@ -74,6 +74,7 @@ public class FeedDisplayViewModel extends AndroidViewModel implements ArticleHan
             repo.saveArticleItem(ItemsToEntityMapper.apply(a));
         }
 
+
     }
 
     private void onNewsArticlesError(Throwable throwable) {
