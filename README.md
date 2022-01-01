@@ -1,10 +1,9 @@
 # NewsReader
 
-NewsReader este o aplicatie mobile pentru Android al carei scop este preluarea stirilor printr-un API, stocarea si afisarea lor.
+NewsReader is a mobile app for Android that receives news articles through an API, stores them locally and then displays them.
 
-Este utilizata tehnologia Room pentru stocarea datelor si design pattern-ul Repository Pattern.
+For storing data it is used the Room Framework and the Repository Pattern.
 
-Pentru afisarea datelor a fost aplicat modelul MVVM.
+For displaying the articles is applied the MVVM design pattern is applied.
 
-Scopul proiectului este aplicarea si exersarea Repository Pattern, a modelul MVVM si utilizarea
-sistemului de versionare Git
+This app was created for learning and using the Repository Pattern and the MVVM design pattern.
