@@ -6,4 +6,5 @@ Este utilizata tehnologia Room pentru stocarea datelor si design pattern-ul Repo
 
 Pentru afisarea datelor a fost aplicat modelul MVVM.
 
-Scopul proiectului este aplicarea si exersarea Repository Pattern si modelul MVVM
+Scopul proiectului este aplicarea si exersarea Repository Pattern, a modelul MVVM si utilizarea
+sistemului de versionare Git
